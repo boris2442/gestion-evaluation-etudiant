@@ -1,85 +1,128 @@
-<aside id="sidebar" class="min-w-64 header-home
-           bg-blue-600 text-white shadow-lg min-h-screen fixed z-40 left-0 top-0
-           transform -translate-x-full md:translate-x-0 transition-transform duration-300
-           md:fixed md:block block md:min-w-64
-           dark:bg-neutral-900 dark:text-neutral-200" style="width: 16rem;">
-
+<aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-16 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-neutral-900 dark:border-neutral-700">
+    
     <!-- Titre entreprise -->
     <div class="h-16 flex items-center justify-center uppercase font-bold text-xl 
-                text-white dark:text-neutral-100 tracking-wide border-b border-blue-700 dark:border-neutral-700">
-        GODFASHION
+                text-gray-800 dark:text-white tracking-wide border-b border-gray-200 dark:border-neutral-700">
+        Gestion Evaluations
     </div>
 
     <!-- Navigation -->
     <nav class="mt-6 px-4 space-y-2">
-
-        <!-- Exemple lien -->
+        <!-- Accueil -->
         <a href=""
             class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-                   ">
-            <i class="fas fa-home mr-2"></i> Accueil
-        </a>
-        {{-- @auth --}}
-     
-        <a href="{{ route('admin.dashboard') }}"
-            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-                 'bg-blue-700 text-white dark:bg-neutral-800'  'text-gray-200 dark:text-neutral-300' }}">
-            <i class="fas fa-chart-line mr-2"></i> Dashboard
-        </a>
-        {{-- @endauth --}}
-        <a href=""
-            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-                  'bg-blue-700 text-white dark:bg-neutral-800' : 'text-gray-200 dark:text-neutral-300' }}">
-            <i class="fas fa-users mr-2"></i> Utilisateurs
+               'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800'">
+            <i class="fas fa-home mr-3"></i> 
+            <span>Accueil</span>
         </a>
 
-        <a href=" " 
+        <!-- Dashboard -->
+        <a href=""
             class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-           'bg-blue-700 text-white dark:bg-neutral-800' : 'text-gray-200 dark:text-neutral-300' }}">
-            <i class="fas fa-book mr-2"></i> Clients
+                  'bg-blue-600  text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800'">
+            <i class="fas fa-chart-line mr-3"></i> 
+            <span>Dashboard</span>
         </a>
 
-        <a href=" "  
+        <!-- Années Académiques -->
+        <a 
+        href="{{route('annee-academiques.index')}}"
             class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-       'bg-blue-700 text-white dark:bg-neutral-800' : 'text-gray-200 dark:text-neutral-300' }}">
-            <i class="fas fa-layer-group mr-2"></i> Commandes
+           'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-calendar-alt mr-3"></i> 
+            <span>Années Académiques</span>
         </a>
-        <a href=""
+
+        <!-- Utilisateurs -->
+        <a 
+        href="{{ route('specialites.index') }}"
             class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-            'bg-blue-700 text-white dark:bg-neutral-800' : 'text-gray-200 dark:text-neutral-300' "      >
-            <i class="fas fa-money-check-alt mr-2"></i> Paiements
+           'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-graduation-cap mr-3"></i> 
+            <span>Specialites</span>
         </a>
-        <a href=""
+
+        <!-- Clients -->
+        <a 
             class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                   hover:bg-blue-700 hover:text-white
-                   dark:hover:bg-neutral-800 dark:hover:text-white
-              ">
-            <i class="fas fa-money-bill mr-2"></i> Depenses
+                  'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-book mr-3"></i> 
+            <span>Clients</span>
         </a>
-       
+
+        <!-- Commandes -->
+        <a 
+            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+          'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-layer-group mr-3"></i> 
+            <span>Commandes</span>
+        </a>
+
+        <!-- Paiements -->
+        <a 
+            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+                 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-money-check-alt mr-3"></i> 
+            <span>Paiements</span>
+        </a>
+
+        <!-- Dépenses -->
+        <a 
+            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+               'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+            <i class="fas fa-money-bill mr-3"></i> 
+            <span>Dépenses</span>
+        </a>
+
+        <!-- Séparateur -->
+        <div class="border-t border-gray-200 dark:border-neutral-700 my-4"></div>
+
         <!-- Déconnexion -->
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" class="mt-4">
             @csrf
-            <button type="submit" class="flex items-center w-full text-left py-2.5 px-4 rounded-lg transition duration-200
-                       bg-red-500 hover:bg-red-600 text-white dark:text-neutral-200 dark:hover:bg-red-700">
-                <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
+            <button type="submit" 
+                    class="flex items-center w-full py-2.5 px-4 rounded-lg transition duration-200
+                           bg-red-500 hover:bg-red-600 text-white dark:hover:bg-red-700">
+                <i class="fas fa-sign-out-alt mr-3"></i> 
+                <span>Déconnexion</span>
             </button>
         </form>
     </nav>
 </aside>
 
 <!-- Overlay mobile -->
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-30 hidden md:hidden" onclick="toggleSidebar()">
+<div id="sidebar-overlay" 
+     class="fixed inset-0 bg-black bg-opacity-40 z-30 hidden md:hidden" 
+     onclick="toggleSidebar()">
 </div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const isOpen = sidebar.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+        }
+    }
+
+    // Initialisation au chargement
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        
+        // Sur mobile, cacher la sidebar par défaut
+        if (window.innerWidth < 768) {
+            sidebar.classList.add('-translate-x-full');
+            sidebar.classList.remove('translate-x-0');
+            overlay.classList.add('hidden');
+        }
+    });
+</script>

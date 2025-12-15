@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpecialiteController;
+use App\Http\Controllers\AnneeAcademiqueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +19,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+// ... Assurez-vous que l'utilisateur est authentifié pour accéder à ces routes
+// Vous devriez wraper ces routes dans un middleware 'auth'
+
+// Route::group(function () {
+//     // Route Resource pour les opérations CRUD standard (index, create, store, edit, update, destroy)
+//     Route::resource('annee-academiques', AnneeAcademiqueController::class);
+
+//     // Route spécifique pour l'activation/désactivation de l'année
+//     Route::put('annee-academiques/{annee_academique}/toggle-statut', [AnneeAcademiqueController::class, 'toggleStatut'])
+//         ->name('annee-academiques.toggle-statut');
+// });
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('annee-academiques', AnneeAcademiqueController::class);
+
+    Route::put('annee-academiques/{annee_academique}/toggle-statut', [AnneeAcademiqueController::class, 'toggleStatut'])
+        ->name('annee-academiques.toggle-statut');
+});
+
+// Route Resource pour la gestion des Spécialités
+    Route::resource('specialites', SpecialiteController::class);
+
+
+require __DIR__ . '/auth.php';

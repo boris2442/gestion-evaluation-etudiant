@@ -21,7 +21,7 @@
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/style.css'])
 
     @endif
 
@@ -32,14 +32,14 @@
 </head>
 
 <body class='bg-white dark:bg-neutral-800 transition-colors duration-300'>
-    @include('components.dashboard.aside')
+    @include('components.dashboard.sidebar')
     <div class="flex-1 flex flex-col">
         @include('components.dashboard.header')
-        <main class="flex-1 overflow-y-auto p-6 md:ml-64 mt-16">
+        <main class="flex-1 overflow-y-auto p-6  mt-16">
             @yield('content')
         </main>
     </div>
-    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </body>
 

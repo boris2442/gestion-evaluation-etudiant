@@ -3,12 +3,79 @@
 @section('content')
 <div class="min-h-screen bg-gray-50 dark:bg-neutral-900 py-10 px-4 ml-0 md:ml-64 mt-16">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Gestion des Années Académiques</h1>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Gestion des Années Académiques</h1>
         
-        <a href="{{ route('annee-academiques.create') }}" 
+        {{-- <a href="{{ route('annee-academiques.create') }}" 
            class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">
             ➕ Ajouter une Année
-        </a>
+        </a> --}}
+
+        
+
+{{-- NOUVEAU BLOC : Bouton Kebab Menu avec Dropdown --}}
+        <div class="relative inline-block text-left" x-data="{ open: false }" @click.outside="open = false">
+            
+            {{-- Bouton Kebab (3 points verticaux) --}}
+            <button @click="open = !open" type="button" 
+                    class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150" 
+                    id="menu-button" aria-expanded="true" aria-haspopup="true">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                </svg>
+            </button>
+
+            {{-- Menu Déroulant --}}
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-100" 
+                 x-transition:enter-start="transform opacity-0 scale-95" 
+                 x-transition:enter-end="transform opacity-100 scale-100" 
+                 x-transition:leave="transition ease-in duration-75" 
+                 x-transition:leave-start="transform opacity-100 scale-100" 
+                 x-transition:leave-end="transform opacity-0 scale-95" 
+                 class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-neutral-700 ring-1 ring-black ring-opacity-5 focus:outline-none z-10" 
+                 role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                <div class="py-1" role="none">
+                    
+                    {{-- Option 1: Ajouter --}}
+                    <a href="{{ route('annee-academiques.create') }}" 
+                       class="text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-neutral-600 transition duration-100" 
+                       role="menuitem" tabindex="-1">
+                       ➕ Ajouter une Année
+                    </a>
+                    
+                    {{-- Séparateur --}}
+                    <div class="border-t border-gray-100 dark:border-neutral-600"></div>
+
+                    {{-- Option 2: Exporter --}}
+                    <a href="#" {{-- Ajoutez ici la route d'exportation --}}
+                       class="text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-neutral-600 transition duration-100" 
+                       role="menuitem" tabindex="-1">
+                       📥 Exporter la liste (Excel)
+                    </a>
+                    
+                    {{-- Option 3: Imprimer --}}
+                    <a href="#" onclick="window.print()" 
+                       class="text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-neutral-600 transition duration-100" 
+                       role="menuitem" tabindex="-1">
+                       🖨️ Imprimer la page
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
     {{-- Affichage des messages Flash (Succès ou Erreur) --}}
@@ -23,7 +90,7 @@
         </div>
     @endif
 
-    <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-hidden">
+    <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-auto">
         <table class="min-w-full leading-normal">
             <thead>
                 <tr class="bg-gray-100 dark:bg-neutral-700 text-gray-600 dark:text-gray-300 uppercase text-sm leading-normal">
@@ -48,7 +115,7 @@
                         </td>
                         
                         {{-- Période --}}
-                        <td class="py-3 px-6 text-left dark:text-gray-300">
+                        <td class="py-3 px-6 text-left dark:text-gray-300 text-xs"  >
                             Du {{ $annee->date_debut->format('d/m/Y') }} au {{ $annee->date_fin->format('d/m/Y') }}
                         </td>
                         

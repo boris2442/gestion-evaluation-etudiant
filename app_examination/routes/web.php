@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\AnneeAcademiqueController;
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['web']], function () {
 
 // Route Resource pour la gestion des Spécialités
     Route::resource('specialites', SpecialiteController::class);
-
+// Routes pour la gestion des Modules
+    Route::resource('modules', ModuleController::class);
 
 require __DIR__ . '/auth.php';

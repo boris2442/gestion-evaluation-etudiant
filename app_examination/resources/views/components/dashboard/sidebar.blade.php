@@ -3,7 +3,7 @@
     <!-- Titre entreprise -->
     <div class="h-16 flex items-center justify-center uppercase font-bold text-xl 
                 text-gray-800 dark:text-white tracking-wide border-b border-gray-200 dark:border-neutral-700">
-        Gestion Evaluations
+       S.G.E.M.A
     </div>
 
     <!-- Navigation -->
@@ -25,30 +25,39 @@
         </a>
 
         <!-- Années Académiques -->
-        <a 
-        href="{{route('annee-academiques.index')}}"
-            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-           'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
-            <i class="fas fa-calendar-alt mr-3"></i> 
-            <span>Années Académiques</span>
-        </a>
+     <a href="{{ route('annee-academiques.index') }}"
+   class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+   {{ request()->routeIs('annee-academiques.*')
+        ? 'bg-[#F3F4F6] dark:bg-black text-gray-900 dark:text-white'
+        : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+    
+    <i class="fas fa-calendar-alt mr-3"></i>
+    <span>Années Académiques</span>
+</a>
 
+{{-- Si les liens sont active on do --}}
         <!-- Utilisateurs -->
         <a 
         href="{{ route('specialites.index') }}"
-            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-           'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+          class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+   {{ request()->routeIs('specialites.*')
+        ? 'bg-[#F3F4F6] text-gray-900'
+        : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}" >
             <i class="fas fa-graduation-cap mr-3"></i> 
             <span>Specialites</span>
         </a>
 
         <!-- Clients -->
-        <a 
-            class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
-                  'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
-            <i class="fas fa-book mr-3"></i> 
-            <span>Clients</span>
-        </a>
+   <a href="{{ route('modules.index') }}"
+   class="flex items-center py-2.5 px-4 rounded-lg transition duration-200
+   {{ request()->routeIs('modules.*')
+        ? 'bg-[#F3F4F6] dark:bg-neutral-800 text-gray-900 dark:text-white'
+        : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-800' }}">
+    
+    <i class="fas fa-book mr-3"></i>
+    <span>Modules</span>
+</a>
+
 
         <!-- Commandes -->
         <a 

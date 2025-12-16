@@ -8,7 +8,7 @@
     $isEdit = isset($annee); 
     // Utiliser ?-> pour éviter l'erreur si $annee est null
     $title = $isEdit ? 'Modifier l\'Année Académique : ' . $annee?->libelle : 'Créer une Nouvelle Année Académique';
-    $action = $isEdit ? route('annee-academiques.update', $annee) : route('annee-academiques.store');
+    $action = $isEdit ? route('annee-academiques.update ', $annee) : route('annee-academiques.store');
     $method = $isEdit ? 'PUT' : 'POST';
 @endphp
 @section('content')
